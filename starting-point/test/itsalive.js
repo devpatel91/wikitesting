@@ -4,13 +4,13 @@ var expect = chai.expect;
 chai.use(spy);
 
 describe('Check whether 2+2 = 4', function() {
-    it('should return 4', function() {
+    xit('should return 4', function() {
         expect(2 + 2).to.equal(4);
     });
 });
 
 describe('check whether the setTimeout is working', function() {
-    it('should console.log after 1000ms', function(done) {
+    xit('should console.log after 1000ms', function(done) {
         var start = new Date();
         setTimeout(function() {
             var duration = new Date() - start;
@@ -23,7 +23,7 @@ describe('check whether the setTimeout is working', function() {
 
 
 describe('Check how many times forEach is ran ', function() {
-    it('forEach should run for each element', function() {
+    xit('forEach should run for each element', function() {
         var arr = [1, 2, 3];
 
         function add(element) {
