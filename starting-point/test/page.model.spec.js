@@ -8,22 +8,36 @@ var models = require('../models');
 var Page = models.Page;
 var page;
 
-beforeEach(function(){
-	page = Page.build();
-});
+beforeEach(function(done){
+	Page.create({
+		title: "Fullstack Testing",
+		content: "Here, we are trying to learn Testing",
+		status: "open",
 
+		tags: 'programming,coding,javascript'
+	})
+	.then(function(result){
+		page = result;
+		done();
+	})
+	
+
+})
 describe('Page model', function () {
 
   describe('Virtuals', function () {
     describe('route', function () {
-      it('returns the url_name prepended by "/wiki/"', function(){
-      	page.urlTite = "Obama";
 
+      it('returns the url_name prepended by "/wiki/"', function(){
+      	console.log("!!!!!" + page.route)
       	expect(page.route.slice(0,6)).to.be.equal("/wiki/");
       });
     });
     describe('renderedContent', function () {
-      xit('converts the markdown-formatted content into HTML');
+      it('converts the markdown-formatted content into HTML',function(){
+          expect(page.renderedContent).to.be.equal("<p>"+ page.content + "</p>\n");
+      });
+
     });
   });
 
